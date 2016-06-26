@@ -1,0 +1,57 @@
+<div class="container">
+
+  <div>
+    <acme-navbar creation-date="main.creationDate"></acme-navbar>
+  </div>
+
+  <div class="jumbotron text-center">
+
+    <div ng-controller="TimeController">
+      <timer autostart="false" interval="1000">
+        <h1>{{hours}} hour{{hoursS}}, {{minutes}} minute{{minutesS}}, {{seconds}} second{{secondsS}}.</h1>
+      </timer>
+
+      <button class="btn btn-lg btn-success animated infinite" ng-class="main.classAnimation" ng-click="startTimer()" ng-disabled="timerRunning">Start Timer</button>
+      <button class="btn btn-lg btn-success" ng-click="stopTimer()" ng-disabled="!timerRunning">Stop Timer</button>
+    </div>
+
+
+    <h2>Todo</h2>
+    <div ng-controller="MainController as todoList">
+      <span>{{todoList.remaining()}} of {{todoList.todos.length}} remaining</span>
+      [ <a href="" ng-click="todoList.archive()">archive</a> ]
+      <ul class="unstyled">
+        <li ng-repeat="todo in todoList.todos">
+          <label class="checkbox">
+            <input type="checkbox" ng-model="todo.done">
+            <span class="done-{{todo.done}}">{{todo.text}}</span>
+          </label>
+        </li>
+      </ul>
+      <form ng-submit="todoList.addTodo()">
+        <input type="text" ng-model="todoList.todoText"  size="30"
+               placeholder="add new todo here">
+        <input class="btn-primary" type="submit" value="add">
+      </form>
+    </div>
+
+
+    <p>
+      With ♥ thanks to the contributions of<acme-malarkey extra-values="['Yeoman', 'Gulp', 'Angular']"></acme-malarkey>
+    </p>
+  </div>
+
+  <div class="row">
+    <div class="col-sm-6 col-md-4" ng-repeat="awesomeThing in main.awesomeThings | orderBy:'rank'">
+      <div class="thumbnail">
+        <img class="pull-right" ng-src="assets/images/{{ awesomeThing.logo }}" alt="{{ awesomeThing.title }}">
+        <div class="caption">
+          <h3>{{ awesomeThing.title }}</h3>
+          <p>{{ awesomeThing.description }}</p>
+          <p><a ng-href="{{awesomeThing.url}}">{{ awesomeThing.url }}</a></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
