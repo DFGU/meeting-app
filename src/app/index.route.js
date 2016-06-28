@@ -3,7 +3,7 @@
 
   angular
     .module('meetingApp')
-    .config(routeConfig);
+    .config(routeConfig)
 
   function routeConfig($routeProvider) {
     $routeProvider
