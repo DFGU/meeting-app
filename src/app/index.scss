@@ -48,6 +48,23 @@ $icon-font-path: "../../bower_components/bootstrap-sass/assets/fonts/bootstrap/"
   color: #fff;
 }
 
+.jumbotron {
+  h1 {
+    font-size: 5.5em;
+  }
+
+  .btn-lg {
+    width: 130px;
+    margin-left: 5px;
+    margin-right: 5px;
+    margin-bottom: 40px;
+    margin-top: 10px;
+  }
+
+  form {
+    margin-bottom: 20px;
+  }
+}
 
 
 

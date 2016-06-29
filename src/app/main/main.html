@@ -6,8 +6,9 @@
 
   <div class="jumbotron text-center">
 
+    <!-- Timer -->
     <div ng-controller="TimeController">
-      <timer autostart="false" interval="1000">
+      <timer class="bh" autostart="false" interval="1000">
         <h1>{{hours}}h : {{minutes}}m : {{seconds}}s</h1>
       </timer>
 
@@ -15,12 +16,11 @@
       <button class="btn btn-lg btn-default btn-stop" ng-click="resetTimer()">Reset Timer</button>
     </div>
 
-
-    <br>
+    <!-- Input form -->
     <div ng-controller="MainController as todoList">
       <form class="form-inline" ng-submit="todoList.addTodo()">
         <div class="form-group">
-          <input type="text" class="form-control" ng-model="todoList.todoText" size="30" placeholder="Enter a meeting topic">
+          <input type="text" class="form-control" ng-model="todoList.todoText" size="60" placeholder="Enter a meeting topic">
         </div>
         <div class="form-group">
           <input type="number" class="form-control" ng-model="todoList.todoTime" min="1" max="60">
@@ -28,34 +28,10 @@
 
         <button class="btn btn-primary" type="submit">Add</button>
       </form>
-
-      <br>
-      
-      <!--{{checkTodoTime}}
-      <ul class="list-group">
-        <li class="list-group-item {{$first ? 'active' : ''}} {{todo.done ? 'active' : ''}}" ng-repeat="todo in todoList.todos | orderBy:'time'">
-          <label class="checkbox">
-            <input type="checkbox" ng-model="todo.done">
-            <span class="done-{{todo.done}}">{{todo.text}} --- Duration : {{todo.time}}m</span>
-          </label>
-        </li>
-      </ul>-->   
     </div>
 
-
+    <!-- Topic list -->
     <div ng-controller="TableController">
-      <!--<div ui-tree>
-        <ol ui-tree-nodes="" ng-model="list">
-          <li class="list-group-item {{$first ? 'active' : ''}} {{todo.done ? 'active' : ''}}" 
-            ng-repeat="todo in list" ui-tree-node>
-            <label class="checkbox">
-              <input type="checkbox" ng-model="todo.done">
-              <span class="done-{{todo.done}}">{{todo.text}} --- Duration : {{todo.time}}m</span>
-            </label>
-          </li>
-        </ol>
-      </div>-->
-
       <table ui-tree="treeOptions" id="tree-root" class="table table-responsive">
         <thead>
           <tr>
@@ -93,14 +69,14 @@
         </tbody>
       </table>
 
-      <span>{{remaining}} of {{list.length}} remaining</span>
+      <span>{{remaining()}} of {{list.length}} remaining</span>
       <!--[ <a href="" ng-click="todoList.archive()">archive</a> ]-->
     </div>
 
   </div>
 
   <p>
-    With ♥ thanks to the contributions of<acme-malarkey extra-values="['Yeoman', 'Gulp', 'Angular']"></acme-malarkey>
+    Created by <a href="http://davidfarrow.me">David Farrow</a> &#9996;. Thanks to the contributions of<acme-malarkey extra-values="['Yeoman', 'Gulp', 'Angular']"></acme-malarkey>
   </p>
 
 </div>

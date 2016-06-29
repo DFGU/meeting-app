@@ -3,23 +3,31 @@
 
   angular
     .module('meetingApp')
-    .service("todoService", function (){
+    .service("todoService", function ($cookies){
       this.seconds = 0;
       this.minutes = 0;
       this.hours = 0;
 
+
       this.todos = [
-        {text:'learn angular', duration:5, done:true, time:5 ,rowClass:''},
-        {text:'angular2', duration:2, done:false, time:7, rowClass:''},
-        {text:'build an angular app', duration:1, done:false, time:8, rowClass:''}];
+        {text:'Example topic 1', duration:1, done:true, time:1 ,rowClass:''},
+        {text:'Example topic 2', duration:2, done:false, time:3, rowClass:''},
+        {text:'Example topic 3', duration:5, done:false, time:8, rowClass:''}];
+
+      this.todos = $cookies.getObject('topicList');
 
       this.updateTodosTime = function() {
         var time = 0;
         angular.forEach(this.todos, function(todo) {
-          console.log(todo.text);
           time += todo.duration;
           todo.time = time;
         });
+        $cookies.putObject('topicList', this.todos);
+      };
+
+      this.resetList = function() {
+        this.todos = [{text:'Example topic', duration:2, done:false, time:1 ,rowClass:''}];
+        $cookies.putObject('topicList', this.todos);
       };
 
       this.getTodos = function() {
@@ -38,22 +46,26 @@
         return this.hours;
       };
 
-      this.remaining = function() {
-        var count = 0;
-        angular.forEach(this.todos, function(todo) {
-          count += todo.done ? 0 : 1;
-        });
-        return count;
-      };
+      this.addTopic = function(topicText, topicTime) {
+        var time = 0;
 
-      this.archive = function() {
-        var oldTodos = this.todos;
-        this.todos = [];
-        angular.forEach(oldTodos, function(todo) {
-          if (!todo.done) this.todos.push(todo);
-        });
-      };
+        if (this.todos.length == 1 && this.todos[0].text == "Example topic"){
+          this.todos[0].text = topicText;
+          this.todos[0].duration = topicTime;
+          this.todos[0].time = topicTime;
+          return;
+        }
 
+        angular.forEach(this.todos, function(todo, key) {
+          time += todo.duration;
+        });
+        time += topicTime;
+        
+        this.todos.push({text:topicText, duration:topicTime, done:false, time:time});
+
+        $cookies.putObject('topicList', this.todos);
+      };
+      
     });
 
 
@@ -72,16 +84,12 @@
 
     vm.todos = todoService.getTodos();
 
-    vm.addTodo = function() {
-      var time = 0;
-      angular.forEach(vm.todos, function(todo) {
-        time += todo.duration;
-      });
-      time += vm.todoTime;
-      vm.todos.push({text:vm.todoText, duration:vm.todoTime, done:false, time:time});
+    vm.addTodo = function () {
+      todoService.addTopic(vm.todoText, vm.todoTime);
+
       vm.todoText = '';
       vm.todoTime = 5;
-    };
+    }
   }
 
 
@@ -280,14 +288,11 @@
     angular.module("meetingApp")
       .controller("TableController", function($scope, todoService) {
 
-        $scope.remaining = todoService.remaining();
-        
         $scope.list = todoService.getTodos();
-        
+
         $scope.models = {
             selected: null
         };
-
 
         $scope.treeOptions = {
           dropped: function() {
@@ -295,9 +300,30 @@
           },
           removed: function() {
             todoService.updateTodosTime();
+            if ($scope.list.length == 0) {
+              todoService.resetList();
+              $scope.list = todoService.getTodos();
+            }
           }
         };
 
+        $scope.remaining = function() {
+          var count = 0;
+          angular.forEach($scope.list, function(todo) {
+            count += todo.done ? 0 : 1;
+          });
+          return count;
+        };
+
+        $scope.archive = function() {
+          var oldTodos = $scope.list;
+          $scope.list = [];
+          angular.forEach(oldTodos, function(todo) {
+            if (!todo.done) $scope.list.push(todo);
+          });
+        };
+
     });
+
 
 })();
