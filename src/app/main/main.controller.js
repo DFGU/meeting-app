@@ -9,12 +9,15 @@
       this.hours = 0;
 
 
-      this.todos = [
-        {text:'Example topic 1', duration:1, done:true, time:1 ,rowClass:''},
-        {text:'Example topic 2', duration:2, done:false, time:3, rowClass:''},
-        {text:'Example topic 3', duration:5, done:false, time:8, rowClass:''}];
-
       this.todos = $cookies.getObject('topicList');
+
+      if (this.todos == null){
+        this.todos = [
+          {text:'Example topic 1', duration:1, done:true, time:1 ,rowClass:''},
+          {text:'Example topic 2', duration:2, done:false, time:3, rowClass:''},
+          {text:'Example topic 3', duration:5, done:false, time:8, rowClass:''}];
+      }
+    
 
       this.updateTodosTime = function() {
         var time = 0;
@@ -53,6 +56,7 @@
           this.todos[0].text = topicText;
           this.todos[0].duration = topicTime;
           this.todos[0].time = topicTime;
+          $cookies.putObject('topicList', this.todos);
           return;
         }
 
