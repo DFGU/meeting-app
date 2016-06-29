@@ -31,16 +31,16 @@
     </div>
 
     <!-- Topic list -->
-    <div ng-controller="TableController">
+    <div ng-controller="TableController" class="table-responsive">
       <table ui-tree="treeOptions" id="tree-root" class="table table-responsive">
         <thead>
           <tr>
-            <th>Sort</th>
-            <th>Complete</th>
+            <th width="5%">Sort</th>
+            <th width="10%">Complete</th>
             <th width="40%">Topic</th>
             <th width="20%">Duration</th>
             <th width="20%">Time</th>
-            <th>Remove</th>		   
+            <th></th>		   
           </tr>
         </thead>
         <tbody ui-tree-nodes ng-model="list">
