@@ -84,15 +84,19 @@
     vm.awesomeThings = [];
     vm.classAnimation = '';
     vm.creationDate = 1466910715526;    
-    vm.todoTime = 5;
+    vm.todoTime = '';
 
     vm.todos = todoService.getTodos();
 
     vm.addTodo = function () {
+      // prevent default
+      if (vm.todoText.length == 0 || vm.todoTime == null)
+        return;
+
       todoService.addTopic(vm.todoText, vm.todoTime);
 
       vm.todoText = '';
-      vm.todoTime = 5;
+      vm.todoTime = '';
     }
   }
 
@@ -263,7 +267,7 @@
           // complete
           if ($scope.minutes >= todo.time) {
             todo.done = true;
-            todo.rowClass = 'success';
+            todo.rowClass = 'row-complete';
           }
           // half time
           // else if ($scope.minutes >= todo.time - (todo.duration / 2)) {
@@ -271,11 +275,11 @@
           // }
           // minute warning
           else if ($scope.minutes == todo.time - 1) {
-            todo.rowClass = 'warning';
+            todo.rowClass = 'row-warning';
           }
           // running 
           else if ($scope.minutes >= todo.time - todo.duration) {
-            todo.rowClass = 'info';
+            todo.rowClass = 'row-active';
           }
           else {
             todo.rowClass = '';

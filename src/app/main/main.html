@@ -12,23 +12,38 @@
         <h1>{{hours}}h : {{minutes}}m : {{seconds}}s</h1>
       </timer>
 
-      <button class="btn btn-lg btn-primary" ng-click="startTimer()">{{buttonText}} Timer</button>
-      <button class="btn btn-lg btn-default btn-stop" ng-click="resetTimer()">Reset Timer</button>
+      <md-button class="md-raised btn-orange" ng-click="startTimer()">{{buttonText}} Timer</md-button>
+      <md-button class="md-raised btn-stop" ng-click="resetTimer()">Reset Timer</md-button>
     </div>
 
     <!-- Input form -->
     <div ng-controller="MainController as todoList">
       <form class="form-inline" ng-submit="todoList.addTodo()">
-        <div class="form-group">
-          <input type="text" class="form-control" ng-model="todoList.todoText" size="60" placeholder="Enter a meeting topic">
-        </div>
-        <div class="form-group">
-          <input type="number" class="form-control" ng-model="todoList.todoTime" min="1" max="60">
-        </div>
+        <div layout-gt-xs="row">
+          <div layout="column" flex="100">
+            <md-input-container class="md-block">
+              <label>Enter a topic</label>
+              <input required type="text"  ng-model="todoList.todoText">
+            </md-input-container>
+          </div>
 
-        <button class="btn btn-primary" type="submit">Add</button>
+          <div layout="column"  flex-gt-sm="15" flex="100">
+            <md-input-container class="md-block" >
+              <label>Duration</label>
+              <input required type="number" ng-model="todoList.todoTime" min="1" max="60">
+            </md-input-container>
+          </div>
+
+          <div layout="column" flex="nogrow">
+            <md-input-container class="md-block" >
+              <md-button class="md-raised add-btn btn-orange" type="submit"> Add </md-button>
+            </md-input-container>
+          </div> 
+        </div>
       </form>
     </div>
+
+    
 
     <!-- Topic list -->
     <div ng-controller="TableController" class="table-responsive">
@@ -44,22 +59,16 @@
           </tr>
         </thead>
         <tbody ui-tree-nodes ng-model="list">
-          <tr ng-repeat="todo in list" ui-tree-node class="{{$first ? 'active' : ''}} {{todo.rowClass}}">
+          <tr ng-repeat="todo in list" ui-tree-node class="{{$first ? 'row-active' : ''}} {{todo.done ? 'row-complete' : ''}} {{todo.rowClass}}">
             <td>
               <span class="glyphicon glyphicon-resize-vertical sort-btn " ui-tree-handle></span> 
             </td>
             <td>
-              <input type="checkbox" ng-model="todo.done">
+              <md-checkbox ng-model="todo.done"></md-checkbox>
             </td>
-            <td>
-              <strong>{{todo.text}}</strong> 
-            </td>
-            <td>
-              <strong>{{todo.duration}}</strong> 
-            </td>
-            <td>
-              <strong>{{todo.time}}</strong> 
-            </td>
+            <td> {{todo.text}} </td>
+            <td> {{todo.duration}} </td>
+            <td> {{todo.time}} </td>
             <td>
               <a class="pull-right btn btn-xs remove-btn" data-nodrag ng-click="remove($index)">
                 <span class="glyphicon glyphicon-remove"></span>
@@ -75,8 +84,8 @@
 
   </div>
 
-  <p>
-    Created by <a href="http://davidfarrow.me">David Farrow</a> &#9996;. Thanks to the contributions of<acme-malarkey extra-values="['Yeoman', 'Gulp', 'Angular']"></acme-malarkey>
+  <p class="footer">
+    Created by <a href="http://davidfarrow.me">David Farrow</a> &#129304;. Thanks to<acme-malarkey extra-values="['Yeoman', 'Gulp', 'Angular']"></acme-malarkey>
   </p>
 
 </div>

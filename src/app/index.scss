@@ -2,7 +2,7 @@
  *  If you want to override some bootstrap variables, you have to change values here.
  *  The list of variables are listed here bower_components/bootstrap-sass/assets/stylesheets/bootstrap/_variables.scss
  */
-$navbar-inverse-link-color: #5AADBB;
+$navbar-inverse-link-color: #0EA876;
 $icon-font-path: "../../bower_components/bootstrap-sass/assets/fonts/bootstrap/";
 
 /**
@@ -11,6 +11,21 @@ $icon-font-path: "../../bower_components/bootstrap-sass/assets/fonts/bootstrap/"
  */
 // bower:scss
 // endbower
+
+body {
+  background: #212229 !important;
+}
+.main {
+  background: #212229 !important;
+}
+
+.footer {
+    color: #717175;
+}
+
+
+
+
 
 .browsehappy {
   margin: 0.2em 0;
@@ -28,19 +43,10 @@ $icon-font-path: "../../bower_components/bootstrap-sass/assets/fonts/bootstrap/"
 }
 
 
-.done-true {
-  color: grey;
-}
-
-.active {
-  .done-true {
-    color: #eee;
-  }
-}
 
 .btn-stop {
-  background: #777777; 
-  color: #fff;
+  background: #717175 !important; 
+  color: #fff !important;
 }
 
 .btn-stop:hover {
@@ -48,9 +54,31 @@ $icon-font-path: "../../bower_components/bootstrap-sass/assets/fonts/bootstrap/"
   color: #fff;
 }
 
+.add-btn {
+  margin: auto;
+  margin-left: 10px;
+  height: 20px;
+}
+
+.btn-orange {
+    background: #FD6215 !important;
+    color: white !important;
+}
+
 .jumbotron {
+  background: #3a3c48;
+  color: white;
+
+  margin-top: 15px;
+  margin-bottom: 10px;
+
+  padding-bottom: 30px; 
+  
   h1 {
-    font-size: 5.5em;
+    font-size: 8em;
+    @media only screen and (max-width: 700px) {
+        font-size: 4.5em;
+    }
   }
 
   .btn-lg {
@@ -62,7 +90,8 @@ $icon-font-path: "../../bower_components/bootstrap-sass/assets/fonts/bootstrap/"
   }
 
   form {
-    margin-bottom: 20px;
+    margin-top: 30px; 
+    margin-bottom: 0px; 
   }
 }
 
@@ -134,16 +163,84 @@ table {
   th {
     text-align: center;
   }
+
   .sort-btn {
     background: none; 
     border: none;
-    color: black;
+    color: #fff;
   }
 
   .remove-btn{
-    color: black;
+    color: #fff;
   }
 }
+
+.row-active {
+  background: #717175;
+}
+
+.row-warning {
+  background: #717175;
+}
+
+.row-complete {
+  background: #717175;
+}
+
+md-checkbox.md-checked .md-icon {
+ background-color: #FD6215;
+}
+
+
+// normal
+md-input-container:not(.md-input-invalid) .md-input {
+    border-color: white;
+    font-weight: normal !important;
+}
+
+md-input-container:not(.md-input-invalid) label {
+    color: white;
+    font-weight: normal !important;
+}
+
+// normal focused
+md-input-container:not(.md-input-invalid).md-input-focused .md-input {
+    border-color: white;
+    font-weight: normal !important;
+    color: white !important;
+}
+
+md-input-container:not(.md-input-invalid).md-input-focused label {
+    color: white;
+    font-weight: normal !important;
+}
+
+// normal un-focused
+md-input-container:not(.md-input-invalid):not(.md-input-focused) .md-input {
+    border-color: white;
+    font-weight: normal !important;
+    color: white !important;
+}
+
+md-input-container:not(.md-input-invalid):not(.md-input-focused) label {
+    color: white;
+    font-weight: normal !important;
+}
+
+
+// invalid 
+md-input-container.md-input-invalid .md-input {
+    border-color: white !important;
+    font-weight: normal !important;
+}
+
+md-input-container.md-input-invalid label {
+    color: white !important;
+    font-weight: normal !important;
+}
+
+
+
 
 /**
  *  Do not remove the comments below. It's the markers used by gulp-inject to inject

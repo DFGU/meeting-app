@@ -1,3 +1,15 @@
+.md-fab-toolbar {
+  margin-top: 10px;
+}
+
+.md-primary {
+  background: #3a3c48 !important;
+}
+
+.md-fab-toolbar-background {
+  left: 0;
+}
+
 .acme-navbar-text{
   // color: white;
 }
@@ -15,3 +27,26 @@ h1 {
 a:hover, a:focus {
   // color: greenyellow;
 }
+
+nav {
+  background: #3a3c48 !important;
+  border: none !important;
+
+  a {
+    color: white !important;
+    .navbar-brand {
+      color: #FD6215 !important;
+    }
+  }
+
+  p {
+    color: white !important;
+  }
+}
+
+.active {
+  a {
+    background-color: #FD6215 !important;
+  }
+}
+
