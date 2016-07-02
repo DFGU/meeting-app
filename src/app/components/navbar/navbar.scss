@@ -32,6 +32,9 @@ nav {
   background: #3a3c48 !important;
   border: none !important;
 
+  padding: 0;
+
+
   a {
     color: white !important;
     .navbar-brand {
@@ -39,14 +42,47 @@ nav {
     }
   }
 
+  img {
+    margin-top: 2.5px;
+    margin-bottom: 2.5px; 
+    margin-right: 20px;
+
+    @media only screen and (max-width: 750px) {
+        margin-left: 10px;
+    }
+    
+  }
+
   p {
     color: white !important;
+  }
+}
+
+
+.dd-menu {
+  background: #212229;
+
+  a {
+    color: white !important;
+    // background: #212229 !important;
+    &:hover {
+      background: #717175 !important;
+    } 
   }
 }
 
 .active {
   a {
     background-color: #FD6215 !important;
+
+    &:hover {
+      background: #FD6215 !important;
+    }
   }
 }
 
+.navbar-toggle {
+    &:hover {
+      background: #3a3c48 !important;
+    }
+}

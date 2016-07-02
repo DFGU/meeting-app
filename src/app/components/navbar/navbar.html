@@ -1,53 +1,25 @@
-<nav class="navbar navbar-default">
+<nav class="navbar navbar-default" role="navigation">
   <div class="container-fluid">
     <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+      <button type="button" class="navbar-toggle" ng-init="navCollapsed = true" ng-click="navCollapsed = !navCollapsed">
         <span class="sr-only">Toggle navigation</span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-
-      <a class="navbar-brand" href="#">
-        <!--<span class="glyphicon glyphicon-home"></span> -->
-        Tiktokk
-        <!--<img alt="Brand" src="...">-->
+      <a href="javascript:window.location.reload();">
+        <img alt="tiktokk logo" src="assets/images/logo-1-256.png" height="40px">
       </a>
     </div>
-    
 
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-6">
+    <div class="collapse navbar-collapse" uib-collapse="navCollapsed">
       <ul class="nav navbar-nav">
-        <li class="active"><a ng-href="#">Home</a></li>
-        <li><a ng-href="#">About</a></li>
-        <li><a ng-href="#">Contact</a></li>
+        <li class="active"><a href="javascript:window.location.reload();">Home</a></li>
+        <li id="about-btn" style="cursor:pointer"><a ng-click="vm.showConfirm($event)">About</a></li>
+        <li><a href="https://twitter.com/tiktokkapp" target="_blank">Contact</a></li>
       </ul>
-
       <!--<p class="navbar-text navbar-right">Signed in as <a href="#" class="navbar-link">Default User <span class="glyphicon glyphicon-menu-down"></span> </a></p>-->
       <p class="navbar-text navbar-right acme-navbar-text">Application was created {{ vm.relativeDate }}.</p>
     </div>
   </div>
 </nav>
-
-<!--
-<md-fab-toolbar>
-  <md-fab-trigger class="align-with-text">
-    <md-button aria-label="menu" class="md-raised md-fab md-primary">
-      <span class="glyphicon glyphicon-menu-hamburger"></span>
-    </md-button>
-  </md-fab-trigger>
-  <md-toolbar>
-    <md-fab-actions class="md-raised md-toolbar-tools">
-      <md-button aria-label="comment" class="md-icon-button">
-        <md-icon md-svg-src="img/icons/ic_comment_24px.svg"></md-icon>
-        <span class="">Home</span>
-      </md-button>
-      <md-button aria-label="label" class="md-icon-button">
-        <span class="">Home</span>
-      </md-button>
-      <md-button aria-label="photo" class="md-icon-button">
-        <span class="">Home</span>
-      </md-button>
-    </md-fab-actions>
-  </md-toolbar>
-</md-fab-toolbar>-->

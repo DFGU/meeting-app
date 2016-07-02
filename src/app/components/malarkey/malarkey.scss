@@ -1,11 +1,11 @@
 .acme-malarkey {
   text-transform: capitalize;
-  color: #0EA876;
+  color: #FD6215;
 
   &:after {
     animation: cursor-blink 0.4s linear infinite;
     content: "|";
-    color: #0EA876;
+    color: #FD6215;
   }
 }
 

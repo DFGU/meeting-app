@@ -19,7 +19,12 @@ body {
   background: #212229 !important;
 }
 
+a {
+    color: #FD6215;
+}
+
 .footer {
+    margin-left: 20px;
     color: #717175;
 }
 
@@ -45,7 +50,7 @@ body {
 
 
 .btn-stop {
-  background: #717175 !important; 
+  background: #3a3c48 !important; 
   color: #fff !important;
 }
 
@@ -56,7 +61,7 @@ body {
 
 .add-btn {
   margin: auto;
-  margin-left: 10px;
+  margin-left: 0px;
   height: 20px;
 }
 
@@ -66,27 +71,35 @@ body {
 }
 
 .jumbotron {
-  background: #3a3c48;
+  background: #212229;
   color: white;
+  font-family: Roboto;
 
-  margin-top: 15px;
   margin-bottom: 10px;
-
-  padding-bottom: 30px; 
+  margin-top: 10px;
+  padding-top: 20px; 
+  padding-bottom: 10px; 
   
   h1 {
     font-size: 8em;
+
     @media only screen and (max-width: 700px) {
-        font-size: 4.5em;
+        font-size: 5em;
+    }
+    @media only screen and (max-width: 500px) {
+        font-size: 4em;
+    }
+    @media only screen and (max-width: 350px) {
+        font-size: 3.5em;
     }
   }
 
-  .btn-lg {
+  .btn-large {
     width: 130px;
     margin-left: 5px;
     margin-right: 5px;
-    margin-bottom: 40px;
-    margin-top: 10px;
+    margin-bottom: 0px;
+    margin-top: 20px;
   }
 
   form {
@@ -94,7 +107,6 @@ body {
     margin-bottom: 0px; 
   }
 }
-
 
 
 
@@ -176,15 +188,26 @@ table {
 }
 
 .row-active {
-  background: #717175;
+  background: #3a3c48;
 }
 
 .row-warning {
-  background: #717175;
+  background: #3a3c48;
 }
 
 .row-complete {
-  background: #717175;
+  background: #3a3c48;
+  color: #aaa;
+
+  .sort-btn {
+    background: none; 
+    border: none;
+    color: #888;
+  }
+
+  .remove-btn{
+    color: #888;
+  }
 }
 
 md-checkbox.md-checked .md-icon {
@@ -241,7 +264,26 @@ md-input-container.md-input-invalid label {
 
 
 
+md-dialog-content {
+    background: #212229;
+    color: white;
+}
 
+.md-toolbar-tools {
+    background: #3a3c48;
+    // color: #FD6215;
+}
+
+md-dialog-actions {
+    background: #3a3c48;
+    color: white;
+}
+
+.container {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
 /**
  *  Do not remove the comments below. It's the markers used by gulp-inject to inject
  *  all your sass files automatically

@@ -119,9 +119,9 @@
 
     function TimeController ($scope, $element, todoService) {
 
-      $scope.seconds = todoService.getSeconds();
-      $scope.minutes = todoService.getMinutes();
-      $scope.hours = todoService.getHours();
+      $scope.seconds = ("0" + todoService.getSeconds()).slice(-2);
+      $scope.minutes = ("0" + todoService.getMinutes()).slice(-2);
+      $scope.hours = ("0" + todoService.getHours()).slice(-2);
 
       $scope.buttonText = 'Start';
 
@@ -182,9 +182,9 @@
           resetTimeout();
           $scope.timeoutId = null;
 
-          $scope.seconds = 0;
-          $scope.minutes = 0;
-          $scope.hours = 0;
+          $scope.seconds = "0"+0;
+          $scope.minutes = "0"+0;
+          $scope.hours = "0"+0;
         }
       };
 
@@ -244,10 +244,9 @@
               $scope.millis = $scope.countdown * 1000
           }
 
-          $scope.seconds = Math.floor(($scope.millis / 1000) % 60);
-          $scope.minutes = Math.floor((($scope.millis / (1000 * 60)) % 60));
-          $scope.hours = Math.floor((($scope.millis / (1000 * 60 * 60)) % 24));
-          $scope.days = Math.floor((($scope.millis / (1000 * 60 * 60)) / 24));
+          $scope.seconds =  ("0" +  Math.floor(($scope.millis / 1000) % 60)).slice(-2);
+          $scope.minutes = ("0" + Math.floor((($scope.millis / (1000 * 60)) % 60))).slice(-2);
+          $scope.hours = ("0" + Math.floor((($scope.millis / (1000 * 60 * 60)) % 24))).slice(-2);
 
 
           checkTopicTime();
@@ -267,7 +266,7 @@
           // complete
           if ($scope.minutes >= todo.time) {
             todo.done = true;
-            todo.rowClass = 'row-complete';
+            // todo.rowClass = 'row-complete';
           }
           // half time
           // else if ($scope.minutes >= todo.time - (todo.duration / 2)) {

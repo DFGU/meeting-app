@@ -9,11 +9,11 @@
     <!-- Timer -->
     <div ng-controller="TimeController">
       <timer class="bh" autostart="false" interval="1000">
-        <h1>{{hours}}h : {{minutes}}m : {{seconds}}s</h1>
+        <h1>{{hours}} : {{minutes}} : {{seconds}}</h1>
       </timer>
 
-      <md-button class="md-raised btn-orange" ng-click="startTimer()">{{buttonText}} Timer</md-button>
-      <md-button class="md-raised btn-stop" ng-click="resetTimer()">Reset Timer</md-button>
+      <md-button class="md-raised btn-orange btn-large" ng-click="startTimer()">{{buttonText}} Timer</md-button>
+      <md-button class="md-raised btn-stop btn-large" ng-click="resetTimer()">Reset Timer</md-button>
     </div>
 
     <!-- Input form -->
@@ -34,7 +34,7 @@
             </md-input-container>
           </div>
 
-          <div layout="column" flex="nogrow">
+          <div layout="column" flex-md="15"  flex-gt-sm="15" flex="100">
             <md-input-container class="md-block" >
               <md-button class="md-raised add-btn btn-orange" type="submit"> Add </md-button>
             </md-input-container>
@@ -64,7 +64,7 @@
               <span class="glyphicon glyphicon-resize-vertical sort-btn " ui-tree-handle></span> 
             </td>
             <td>
-              <md-checkbox ng-model="todo.done"></md-checkbox>
+              <md-checkbox ng-model="todo.done" aria-label="todo toggle"></md-checkbox>
             </td>
             <td> {{todo.text}} </td>
             <td> {{todo.duration}} </td>
@@ -85,7 +85,7 @@
   </div>
 
   <p class="footer">
-    Created by <a href="http://davidfarrow.me">David Farrow</a> &#129304;. Thanks to<acme-malarkey extra-values="['Yeoman', 'Gulp', 'Angular']"></acme-malarkey>
+    Created by <a href="http://davidfarrow.me" target="_blank">David Farrow</a> &#129304;. Thanks to<acme-malarkey extra-values="['Yeoman', 'Gulp', 'Angular']"></acme-malarkey>
   </p>
 
 </div>
