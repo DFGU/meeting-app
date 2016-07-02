@@ -45,7 +45,7 @@
           parent: angular.element(document.body),
           clickOutsideToClose: true,
           targetEvent: ev,
-          templateUrl: 'aboutDialog.html',
+          templateUrl: '../aboutDialog.html',
           locals: {
             items: $scope.items
           },
