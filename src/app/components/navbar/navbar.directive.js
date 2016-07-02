@@ -45,19 +45,52 @@
           parent: angular.element(document.body),
           clickOutsideToClose: true,
           targetEvent: ev,
-          templateUrl: '../aboutDialog.html',
-          locals: {
-            items: $scope.items
-          },
+          template:
+            '<md-dialog aria-label="About" ng-cloak>' +
+            '  <form>'+
+            '    <md-toolbar>'+
+            '      <div class="md-toolbar-tools">'+
+            '       <h2>About</h2>' +
+            '       <span flex></span>'+
+            '    	  <md-button class="md-icon-button" ng-click="closeDialog()">'+
+            '  	      <md-icon aria-label="Close dialog">x</md-icon>' +
+            '  	    </md-button>' +
+            '    	 </div>' +
+            '    </md-toolbar>' +
+            '    <md-dialog-content>' +
+            '  	    <div class="md-dialog-content">' +
+            '	        <img style="margin: auto; max-width: 100%;" alt="tiktokk logo" src="assets/images/logo-1-2048.png">' +
+            '    	    <h2>About</h2>' +
+            '  	    	<p>Whether its a meeting, a workout routine, or anything in-between, with tiktokk you can stay on time by planning and tracking your tasks.</p>' +
+            '	        <p>tiktokk is a simple web application where you can create, organise, and track tasks easily. Specify task topics and durations, arrange them in order, then as the timer runs you can see (and soon hear) the state of your schedule.</p>' +
+            '    	    <p>We are a new platform that will continue to grow and imporve. We plan to allow users to create accounts and save multiple schedules soon. For now your schedule state will be saved in your browser. User feedback is always welcome' +
+            '  	    	  <a href="https://twitter.com/tiktokkapp" target="_blank">@tiktokkapp</a>' +
+            '  	    	</p>' +
+            '    	  </div>' +
+            '    </md-dialog-content>' +
+            '  </form>' +
+            '</md-dialog>',
           controller: DialogController
         });
-        function DialogController($scope, $mdDialog, items) {
-          $scope.items = items;
-          $scope.closeDialog = function() {
-            $mdDialog.hide();
-          }
-        }
       };
+
+      vm.showPrerenderedDialog = function(ev) {
+        $mdDialog.show({
+          controller: DialogController,
+          contentElement: '#myDialog',
+          parent: angular.element(document.body),
+          targetEvent: ev,
+          clickOutsideToClose: true
+        });
+        
+      };
+
+      function DialogController($scope, $mdDialog) {
+        $scope.closeDialog = function() {
+          $mdDialog.hide();
+        }
+      }
+
     }
   }
 
